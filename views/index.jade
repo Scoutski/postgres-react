@@ -1,0 +1,16 @@
+doctype html
+html
+	head
+		title= title
+		link(rel="stylesheet", href="/stylesheets/style.css")
+	body
+		#app
+
+		script.
+			window.__store = {
+				app: {
+					loading: false
+				}
+			}
+
+		script(src="/javascripts/main.js")
