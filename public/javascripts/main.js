@@ -1,19 +1,22 @@
-import history from './lib/history'
-import promise from 'es6-promise'
-import React from 'react'
-import { Provider } from 'react-redux'
-import Router, { browserHistory } from 'react-router'
-import Store, { reducer } from './redux/store/main'
-import routes from './routes'
+import promise from 'es6-promise';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+// import Router from 'react-router';
+// import routes from './routes';
+
+import Main from './components/main';
+import reducers from './redux/reducers';
 
 console.log('Loading app...');
 
 promise.polyfill();
 
-const store = Store(reducer, window.__store);
+const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-React.render((
-	<Provider store={store}>
-		{() => <Router history={browserHistory} routes={routes(store)} />}
+ReactDOM.render((
+	<Provider store={createStoreWithMiddleware(reducers)}>
+		<Main />
 	</Provider>
 ), document.getElementById('app'));
