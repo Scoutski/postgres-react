@@ -1,5 +1,6 @@
 import React from 'react';
 import promise from 'redux-promise';
+import createLogger from 'redux-logger';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
@@ -7,9 +8,8 @@ import { createStore, applyMiddleware } from 'redux';
 import Main from './components/main';
 import reducers from './redux/reducers';
 
-console.log('Loading app...');
-
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+const logger = createLogger({collapsed: true});
+const createStoreWithMiddleware = applyMiddleware(promise, logger)(createStore);
 
 ReactDOM.render((
 	<Provider store={createStoreWithMiddleware(reducers)}>
