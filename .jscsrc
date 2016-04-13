@@ -1,0 +1,10 @@
+{
+	"validateQuoteMarks": "'",
+	"maximumLineLength": 80,
+	"disallowTrailingWhitespace": true,
+	"validateIndentation": {"value": "\t", "allExcept": ["comments"]},
+	"esnext": true,
+	"esprima": "esprima-fb",
+	"fileExtensions": [".js", ".jsx"],
+	"disallowMultipleVarDecl": true
+}
