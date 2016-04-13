@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+.delete-btn {
+	margin-left: 10px;
+	margin-top: -5px;
+}
+
+.new-todo:hover {
+	background-color: #ADD8E6;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.form-control.todoInput {
+	width: 40%;
+}

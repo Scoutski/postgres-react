@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const FETCH_ITEMS = 'FETCH_ITEMS';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
+export const DELETE_ITEM = 'DELETE_ITEM';
 
 export function fetchItems() {
 	const request = axios.get('/api/v1/todos');
@@ -13,16 +14,19 @@ export function fetchItems() {
 }
 
 export function updateItem(item) {
-	const completeChange = item.complete ? false : true;
-	const updatedItem = {
-		text: item.text,
-		complete: completeChange
-	};
-
-	const request = axios.put(`/api/v1/todos/${item.id}`, updatedItem);
+	const request = axios.put(`/api/v1/todos/${item.id}`, item);
 
 	return {
 		type: UPDATE_ITEM,
+		payload: request
+	};
+}
+
+export function deleteItem(itemId) {
+	const request = axios.delete(`/api/v1/todos/${itemId}`)
+
+	return {
+		type: DELETE_ITEM,
 		payload: request
 	};
 }

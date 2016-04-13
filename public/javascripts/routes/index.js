@@ -1,12 +1,12 @@
-import Main from "../containers/main";
-import AppHome from "../components/app_home"
+import Main from '../containers/main';
+import AppHome from '../components/app_home';
 
 export default function(store) {
 	const routes = [
 	];
 
 	return {
-		path: "/",
+		path: '/',
 		component: Main,
 		indexRoute: {
 			component: AppHome,

@@ -109,9 +109,9 @@ router.delete('/api/v1/todos/:todo_id', function(req, res) {
 			return res.status(500).json({ success: false, data: err });
 		}
 
-		client.query("DELETE FROM items WHERE id=($1);", [id]);
+		client.query('DELETE FROM items WHERE id=($1);', [id]);
 
-		var query = client.query("SELECT * FROM items ORDER BY id ASC;");
+		var query = client.query('SELECT * FROM items ORDER BY id ASC;');
 
 		query.on('row', function(row) {
 			results.push(row);
