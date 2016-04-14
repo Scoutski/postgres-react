@@ -12,11 +12,11 @@ export default class TodoItem extends Component {
 	}
 	render() {
 		return (
-			<li className='list-group-item'>
+			<li className='list-group-item todo-item'>
 				<button
 					className='btn-primary pull-xs-right delete-btn'
 					onClick={() => this.props.deleteTodo(this.props.todo.id)}>Delete</button>
-				<label className='pull-xs-right checkbox-inline'>
+				<label className='pull-xs-right checkbox'>
 					<input
 						type='checkbox'
 						checked={this.props.todo.complete}

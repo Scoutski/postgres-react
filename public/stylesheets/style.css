@@ -9,7 +9,6 @@ a {
 
 .delete-btn {
 	margin-left: 10px;
-	margin-top: -5px;
 }
 
 .new-todo:hover {
@@ -20,4 +19,12 @@ a {
 
 .form-control.todoInput {
 	width: 40%;
+}
+
+.todo-item {
+	max-width: 700px;
+}
+
+.empty-todo {
+	text-align: center;
 }

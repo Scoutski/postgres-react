@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import {
 	fetchItems,
 	updateItem,
-	deleteItem
+	deleteItem,
+	addItem
 } from '../redux/actions/todo';
 import TodoItem from '../components/todo_item'
 import NewTodo from '../components/new_todo';
@@ -15,13 +16,19 @@ export class TodoList extends Component {
 	}
 
 	renderItems() {
-		if (this.props.todos.length === 0) return(<p>Loading...</p>)
+		if (this.props.todos.length === 0) {
+			return(
+			<li className='list-group-item todo-item empty-todo'>
+				Add a todo item to get started...
+			</li>
+			)
+		}
 		return this.props.todos.map((todo) => {
 			return (
 				<TodoItem
 					key={todo.id}
 					todo={todo}
-					deleteTodo={this.deleteTodo}
+					deleteTodo={this.deleteTodo.bind(this)}
 					updateTodo={this.updateTodo.bind(this)}
 				/>
 			)
@@ -33,7 +40,7 @@ export class TodoList extends Component {
 			<ul className='list-group'>
 				{this.renderItems()}
 				<NewTodo
-					addToDo={this.addTodo}
+					addTodo={this.addTodo.bind(this)}
 				/>
 			</ul>
 		);
@@ -57,7 +64,12 @@ export class TodoList extends Component {
 		this.props.deleteItem(todoId);
 	}
 
-	addTodo(todo) {
+	addTodo() {
+		const todo = {
+			text: '',
+			complete: false
+		};
+
 		this.props.addItem(todo);
 	}
 }
@@ -77,5 +89,6 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, {
 	fetchItems,
 	updateItem,
-	deleteItem
+	deleteItem,
+	addItem
 })(TodoList);
