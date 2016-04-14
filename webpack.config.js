@@ -1,9 +1,9 @@
 module.exports = {
 	entry: {
-		helloWorld: './public/javascripts/main.js'
+		reactredux: './frontend/main.js'
 	},
 	output: {
-		filename: 'public/app.js'
+		filename: './public/javascripts/app.js'
 	},
 	module: {
 		loaders: [
